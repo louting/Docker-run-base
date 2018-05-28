@@ -1,0 +1,35 @@
+FROM centos:7
+
+USER root
+
+COPY CentOS7-Base-163.repo /etc/yum.repos.d/
+
+COPY Centos-7.repo /etc/yum.repos.d/
+
+RUN set -ex; \
+    yum makecache; \
+    yum install -y wget \
+        readline-devel \
+        pcre-devel \
+        openssl-devel \
+        gcc \
+        gcc-c+ \
+        make \
+        vim 
+
+COPY openresty-1.9.3.2 /usr/local/src/openresty-1.9.3.2
+
+#WORKDIR /usr/local/src/openresty-1.9.3.2/
+
+RUN cd /usr/local/src/openresty-1.9.3.2/ && \
+    /usr/local/src/openresty-1.9.3.2/configure \
+    --prefix=/usr/local/openresty \
+    --with-luajit --with-http_stub_status_module \
+    --with-pcre --with-pcre-jit && \
+    make && make install
+
+COPY waf /usr/local/openresty/nginx/conf/waf
+
+COPY nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
+
+CMD ["/usr/local/openresty/nginx/sbin/nginx", "-g", "daemon off;"]
