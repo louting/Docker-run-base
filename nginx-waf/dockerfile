@@ -1,10 +1,10 @@
-FROM centos:7
+FROM centos:latest
 
 USER root
 
-COPY CentOS7-Base-163.repo /etc/yum.repos.d/
+#COPY CentOS7-Base-163.repo /etc/yum.repos.d/
 
-COPY Centos-7.repo /etc/yum.repos.d/
+#COPY Centos-7.repo /etc/yum.repos.d/
 
 RUN set -ex; \
     yum makecache; \
@@ -31,5 +31,7 @@ RUN cd /usr/local/src/openresty-1.9.3.2/ && \
 COPY waf /usr/local/openresty/nginx/conf/waf
 
 COPY nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
+
+RUN mkdir -p /usr/local/openresty/nginx/conf/conf
 
 CMD ["/usr/local/openresty/nginx/sbin/nginx", "-g", "daemon off;"]
