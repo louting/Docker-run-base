@@ -1,2 +1,5 @@
 ##reference
+
+docker pull registry.cn-hangzhou.aliyuncs.com/tony_lt_cn/nginx-waf:v1
+
 docker run -td --name=nginx-waf -h ng-waf --privileged -v /app/ng-conf:/usr/local/openresty/nginx/conf/conf -v /app/ng-log:/usr/local/openresty/nginx/logs -v /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime -p 30800:80 registry.cn-hangzhou.aliyuncs.com/tony_lt_cn/nginx-waf:v1
