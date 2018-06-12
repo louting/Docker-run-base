@@ -1,0 +1,3 @@
+#gd-lifestyle
+
+docker run -td --name gd-lifestyle -h gf -p 20188:20188 -v /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime  -v /app/lifestyle-app-files:/opt/files gd-lifestyle:latest 

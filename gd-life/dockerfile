@@ -1,0 +1,12 @@
+FROM centos:7
+
+USER root
+
+
+RUN set -ex; \
+    yum install -y wget \
+        net-tools \
+        vim
+WORKDIR /opt/files/
+
+CMD ["./lifestyle-appservice", ">", "1.log;"]
