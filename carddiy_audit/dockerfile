@@ -3,12 +3,13 @@ FROM python:3.4.2
 USER root
 
 RUN set -ex; \
-    pip install flask &&\
-    pip install flask_sqlalchemy &&\
-    pip install flask_login &&\
-    pip install oss2 &&\
-    pip install stomp.py
+    pip install flask && \
+    pip install flask_sqlalchemy && \
+    pip install flask_login && \
+    pip install oss2 && \
+    pip install stomp.py && \
+    pip install pymysql
 
 WORKDIR /app
 
-CMD ["python", "app.py;"]
+CMD ["python", "/app/app.py"]

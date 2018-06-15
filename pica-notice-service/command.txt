@@ -1,0 +1,7 @@
+docker run --name pica-notice-service \
+-h notice --privileged \
+-v /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime:ro \
+-v /app/pica-notice-service/logs:/var/logs/pica-notice-service \
+-v /app/pica-notice-service/app:/app \
+java:8 \
+java -jar /app/pica-notice-0.0.1-SNAPSHOT.jar

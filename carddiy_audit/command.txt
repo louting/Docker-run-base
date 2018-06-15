@@ -1,0 +1,6 @@
+docker run -td --name cspic-screen -h screen -p 5005:5000 \
+    -v /app/screen/apps/cspica-screening:/app \
+    -v /app/screen/logs:/var/logs/pica-screening \
+    -v /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime:ro \
+    --privileged \
+    registry.cn-hangzhou.aliyuncs.com/tony_lt_cn/carddiy-audit
