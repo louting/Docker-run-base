@@ -1,0 +1,6 @@
+FROM tomcat:7
+
+USER root
+
+COPY catalina-logging.properties /usr/local/tomcat/conf/
+

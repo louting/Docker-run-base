@@ -1,0 +1,9 @@
+docker run -td --name xcomm -h xcomm --privileged -p 10080:8080 \
+    -e JAVA_OPTS='-Dfile.encoding=UTF8  -Duser.timezone=GMT+08' \
+    -v /app/xcomm/logs:/usr/local/tomcat/logs \
+    -v /app/xcomm/config:/usr/local/tomcat/conf \
+    -v /app/xcomm/webapps:/usr/local/tomcat/webapps \
+    -v /app/xcomm/data:/opt/cspica/data \
+    -v /app/xcomm/xcommlog:/usr/local/logs \
+    -v /usr/share/zoneinfo/Asia/Shanghai:/etc/localtime:ro \
+    registry.cn-hangzhou.aliyuncs.com/tony_lt_cn/xcomm-tomcat:v1.0
